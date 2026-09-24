@@ -1,4 +1,5 @@
 import { Game } from './game.js';
+import {setupInput} from './input.js';
 
 const board = document.getElementById('game-board');
 
@@ -23,6 +24,17 @@ const createBoard = () => {
 
 const Render = () => {
     const cells = board.children; // Get all cells in the board
+    // Clear
+
+    for (const cell of cells) {
+
+        cell.classList.remove(
+            "snake",
+            "head",
+            "food"
+        );
+
+    }
 
     // Snake
 
@@ -67,6 +79,32 @@ const startGame = () => {
 
     //render the snake
     Render();
+    // setInterval: is a built-in js funtion that calls a funtion at 
+    // specified intervals (in ms). It returns an interval ID that can be used to 
+    // clear the interval Later using clearInterval.
+    interval = setInterval(() => {
+            game.update();
+            Render();
+
+            if (!game.running) {
+
+                clearInterval(interval);
+
+            }
+
+        },
+
+        game.speed
+    );
+    setupInput(direction => {
+
+            game.setDirection(
+                direction
+            );
+
+        }
+    );
+
 
 
 }
