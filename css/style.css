@@ -1,0 +1,36 @@
+*{
+    box-sizing  :border-box;
+    margin: 0;
+    padding: 0;
+} 
+body{
+    min-height :100vh;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+.game-container{
+    width: min(95vw,500px);
+}
+#game-board{
+    width: 100%;
+    aspect-ratio: 1;
+    display: grid;
+
+    grid-template-columns: repeat(20,1fr);
+    grid-template-rows: repeat(20,1fr);
+    border: 1px solid rgb(170, 18, 18);
+}
+
+.cell{
+    border: 1px solid pink;
+}
+
+.snake{
+    background: rgb(21, 104, 198);
+}
+
+.head {
+    background: rgb(148, 148, 32);
+}
